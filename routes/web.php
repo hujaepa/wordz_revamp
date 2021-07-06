@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +15,8 @@ use App\Http\Controllers\Auth\LoginController;
 */
 Route::get('/',[LoginController::class,"index"]);
 Route::post('/login/process',[LoginController::class,"process"])->name("login.process");
+
+Route::group(['prefix'=>'membership'],function() {
+    Route::get('/',[RegisterController::class,"index"]);
+    Route::post('/process',[RegisterController::class,"process"])->name("register.process");
+});

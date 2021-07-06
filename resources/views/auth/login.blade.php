@@ -11,9 +11,9 @@
       </div>
       <div class="card-body">
         @if($errors->has('email') || $errors->has('password') )
-          <p class="login-box-msg text-danger font-weight-bold">Please fill in both of the credentials</p>
+          <p class="login-box-msg text-danger font-weight-bold">Please enter both of the informations</p>
         @else
-          <p class="login-box-msg text-muted font-weight-bold">Please login to proceed</p>
+          <p class="login-box-msg text-muted font-weight-bold"><i class="fas fa-sign-in-alt"></i> Login to proceed</p>
         @endif
         <form action="{{route('login.process')}}" method="post" id="login">
           @csrf
@@ -27,7 +27,7 @@
           </div>
 
           <div class="input-group mb-3">
-            <input type="password" name="password" class="form-control @if($errors->has('password')) is-invalid @endif" placeholder="Password">
+            <input type="password" id="password" name="password" class="form-control @if($errors->has('password')) is-invalid @endif" placeholder="Password">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -46,7 +46,7 @@
           <a href="forgot-password.html">I forgot my password</a>
         </p>
         <p class="mb-0">
-          <a href="register.html" class="text-center">Register a new membership</a>
+          <a href="{{url('/membership')}}" class="text-center">New user registration</a>
         </p>
       </div>
       <!-- /.card-body -->
@@ -55,6 +55,9 @@
   </div>
   <script>
     $("#email").on("focus",function(){
+      $(this).removeClass('is-invalid');
+    });
+    $("#password").on("focus",function(){
       $(this).removeClass('is-invalid');
     });
   </script>
