@@ -5,36 +5,42 @@
 <div class="login-box">
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
-      <div class="card-header text-center">
-        <span class="h1"><b>Wordz</b></span>
+      <div class="card-header text-center p-3">
+        {{-- <span class="h1"><b>Wordz</b></span> --}}
+        <img src="{{asset("img/wordz.png")}}" width="40%" />
       </div>
       <div class="card-body">
-        <p class="login-box-msg">Sign in to start your session</p>
-  
-        <form action="../../index3.html" method="post">
+        @if($errors->has('email') || $errors->has('password') )
+          <p class="login-box-msg text-danger font-weight-bold">Please fill in both of the credentials</p>
+        @else
+          <p class="login-box-msg text-muted font-weight-bold">Please login to proceed</p>
+        @endif
+        <form action="{{route('login.process')}}" method="post" id="login">
+          @csrf
           <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Email">
+            <input type="email" name="email" id="email" class="form-control  @if($errors->has('email')) is-invalid @endif" placeholder="Email" value="{!!old('email')!!}">
             <div class="input-group-append">
-              <div class="input-group-text">
+              <div class="input-group-text ">
                 <span class="fas fa-envelope"></span>
               </div>
             </div>
           </div>
+
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" name="password" class="form-control @if($errors->has('password')) is-invalid @endif" placeholder="Password">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
               </div>
             </div>
           </div>
-        </form>
   
         <div class="text-center mt-2 mb-3">
           <button type="submit" class="btn btn-block btn-primary">
             <i class="fas fa-sign-in-alt"></i> Login
           </button>
         </div>
+        </form>
   
         <p class="mb-1 mx-auto">
           <a href="forgot-password.html">I forgot my password</a>
@@ -47,5 +53,9 @@
     </div>
     <!-- /.card -->
   </div>
-  <!-- /.login-box -->
+  <script>
+    $("#email").on("focus",function(){
+      $(this).removeClass('is-invalid');
+    });
+  </script>
 @endsection

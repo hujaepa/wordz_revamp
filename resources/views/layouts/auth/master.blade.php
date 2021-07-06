@@ -3,11 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> {{config('app.name')}} | Log in</title>
+  <title> {{config('app.name')}} | {{$title}}</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
+  
+<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset("js/particles.js")}}"></script>
+<script>
+    /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+    particlesJS.load('particles-js', 'js/particles.json');
+</script>
   <style>
     #particles-js {
         position: absolute;
@@ -23,13 +30,5 @@
 </head>
 <body class="hold-transition login-page">
     @yield('content')
-<script src="{{asset('js/app.js')}}"></script>
-<script src="{{asset("js/particles.js")}}"></script>
-<script>
-    /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
-    particlesJS.load('particles-js', 'js/particles.json', function() {
-        console.log('callback - particles.js config loaded');
-    });
-</script>
 </body>
 </html>

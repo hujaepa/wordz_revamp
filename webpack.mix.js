@@ -19,3 +19,4 @@ mix.js('resources/js/app.js', 'public/js')
 mix.js([
     "node_modules/particles.js/particles.js"
 ],"public/js/particles.js");
+

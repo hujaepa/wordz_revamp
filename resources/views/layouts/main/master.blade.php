@@ -13,6 +13,8 @@
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">
 
+<!-- ./wrapper -->
+<script src="{{asset('js/app.js')}}"></script>
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-lg navbar-white navbar-light">
     <a class="navbar-brand" href="#">Logo</a>{{--logo--}}
@@ -47,7 +49,5 @@
     </div>
   </footer>
 </div>
-<!-- ./wrapper -->
-<script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>

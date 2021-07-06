@@ -13,3 +13,4 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 Route::get('/',[LoginController::class,"index"]);
+Route::post('/login/process',[LoginController::class,"process"])->name("login.process");
