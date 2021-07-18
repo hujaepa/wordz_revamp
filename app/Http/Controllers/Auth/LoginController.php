@@ -27,10 +27,10 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        // if (Auth::attempt($credentials)) {
-        //     $request->session()->regenerate();
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
 
-        //     return redirect()->to(RouteServiceProvider::HOME);
-        // }
+            return redirect()->to(RouteServiceProvider::HOME);
+        }
     }
 }

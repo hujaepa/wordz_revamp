@@ -7,9 +7,9 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,700&display=fallback">
-  <link rel="stylesheet" href="{{asset('css/app.css')}}">
   <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css">
+  <link rel="stylesheet" href="{{asset('css/app.css')}}">
   <script src="{{asset('js/app.js')}}"></script>
   <script src="{{asset("js/particles.js")}}"></script>
   <script>
