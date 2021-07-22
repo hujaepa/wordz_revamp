@@ -9,7 +9,8 @@
         <img src="{{asset("img/wordz.png")}}" width="40%" />
       </div>
       <div class="card-body">
-          <p class="login-box-msg text-muted font-weight-bold"><i class="fas fa-user-plus"></i> New user registration</p>
+        <div class="d-flex text-muted justify-content-center"><i class="fas fa-user-plus fa-2x"></i></div>
+        <p class="login-box-msg text-muted font-weight-bold">New user registration</p>
         <form action="{{route('register.process')}}" method="post" id="register">
           @csrf
           {{--Name--}}
@@ -58,6 +59,7 @@
                 </div>
               </div>
             </div>
+            <small id="password-confirm-error" class="form-text text-danger"></small>
           </div>
   
         <div class="text-center mt-2 mb-3">
@@ -83,6 +85,8 @@
     $(document).ready(function(){
       $('#name-error').hide();
       $('#email-error').hide();
+      $('#password-error').hide();
+      $('#password-confirm-error').hide();
     });
 
     function formAjax(formData){
@@ -106,6 +110,9 @@
         if($(this).attr('name')==="password"){
           $('#password-error').hide();
         }
+        if($(this).attr('name')==="password_confirmation"){
+          $('#password-confirm-error').hide();
+        }
       }
     });
 
@@ -128,6 +135,12 @@
           $("#password-error").show();
           $("#password").addClass('is-invalid');
           $('#password-error').html(res.error.password);
+        }
+
+        if(res.error.password_confirmation !=null ){
+          $("#password-confirm-error").show();
+          $("#password_confirmation").addClass('is-invalid');
+          $('#password-confirm-error').html(res.error.password_confirmation);
         }
       });
     });

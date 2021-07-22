@@ -10,10 +10,11 @@
         <img src="{{asset("img/wordz.png")}}" width="40%" />
       </div>
       <div class="card-body">
+        <div class="d-flex text-muted justify-content-center"><i class="fas fa-user-circle fa-3x"></i></div>
         @if($errors->has('email') || $errors->has('password') )
           <p class="login-box-msg text-danger font-weight-bold">Please enter both of the informations</p>
         @else
-          <p class="login-box-msg text-muted font-weight-bold"><i class="fas fa-sign-in-alt"></i> Login to proceed</p>
+          <p class="login-box-msg text-muted font-weight-bold">Login to proceed</p>
         @endif
         <form action="{{route('login.process')}}" method="post" id="login">
           @csrf
