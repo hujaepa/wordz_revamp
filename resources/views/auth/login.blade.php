@@ -11,7 +11,7 @@
       </div>
       <div class="card-body">
         <div class="d-flex text-muted justify-content-center"><i class="fas fa-user-circle fa-3x"></i></div>
-        @if($errors->has('email') || $errors->has('password') )
+        @if($errors->has('email') || $errors->has('password'))
           <p class="login-box-msg text-danger font-weight-bold">Please enter both of the informations</p>
         @else
           <p class="login-box-msg text-muted font-weight-bold">Login to proceed</p>
@@ -44,7 +44,7 @@
         </form>
   
         <p class="mb-1 mx-auto">
-          <a href="forgot-password.html">I forgot my password</a>
+          <a href="#">I forgot my password</a>
         </p>
         <p class="mb-0">
           <a href="{{url('/membership')}}" class="text-center">New user registration</a>

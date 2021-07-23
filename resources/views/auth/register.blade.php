@@ -98,7 +98,7 @@
     }
 
     {{--Remove field errors when keyup event--}}
-    $("#register").find(":input").on("keyup",function(){
+    $("#register").find(":input").on("focus",function(){
       if($(this).hasClass("is-invalid")){
         $(this).removeClass("is-invalid");
         if($(this).attr('name')==="name"){
@@ -120,24 +120,25 @@
       e.preventDefault();
       let formData = $(this).serialize();
       formAjax(formData).done(function(res){
-        if(res.error.name !=null ){
+        console.log(res.error);
+        if(res.error.hasOwnProperty('name')){
           $("#name-error").show();
           $("#name").addClass('is-invalid');
           $('#name-error').html(res.error.name);
         }
-        if(res.error.email !=null ){
+        if(res.error.hasOwnProperty('email')){
           $("#email-error").show();
           $("#email").addClass('is-invalid');
           $('#email-error').html(res.error.email);
         }
 
-        if(res.error.password !=null ){
+        if(res.error.hasOwnProperty('password')){
           $("#password-error").show();
           $("#password").addClass('is-invalid');
           $('#password-error').html(res.error.password);
         }
 
-        if(res.error.password_confirmation !=null ){
+        if(res.error.hasOwnProperty('password_confirmation')){
           $("#password-confirm-error").show();
           $("#password_confirmation").addClass('is-invalid');
           $('#password-confirm-error').html(res.error.password_confirmation);
