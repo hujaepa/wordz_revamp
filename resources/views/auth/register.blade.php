@@ -98,7 +98,7 @@
     }
 
     {{--Remove field errors when keyup event--}}
-    $("#register").find(":input").on("focus",function(){
+    $("#register").find(":input").on("keyup",function(){
       if($(this).hasClass("is-invalid")){
         $(this).removeClass("is-invalid");
         if($(this).attr('name')==="name"){
