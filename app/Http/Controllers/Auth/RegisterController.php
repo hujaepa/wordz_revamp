@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Crypt;
 class RegisterController extends Controller
 {
     /**
@@ -22,7 +22,13 @@ class RegisterController extends Controller
         ];
         return view('auth.register',$data);
     }
-    
+    public function success()
+    {
+        $data =[
+            "title" => "Success Register"
+        ];
+        return view('auth.success',$data);
+    }
     public function process(Request $request)
     {
         $validator = Validator::make($request->all(),[
@@ -38,6 +44,6 @@ class RegisterController extends Controller
         $user->email = $request->input("email");
         $user->password = Hash::make($request->input("password"));
         $user->save();
-        redirect("/");
+        return response()->json(['status'=>"success","message" => "You have successsfully registered. You can now proceed to login"]);
     }
 }
