@@ -145,10 +145,17 @@
             $('#password-confirm-error').html(res.error.password_confirmation);
           }
         }
-        
+
         else if(res.hasOwnProperty("status")){
-          alert(res.message);
-          window.location.href="/";
+          Swal.fire({
+            title: 'Success!',
+            text: res.message,
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          }).then(function() {
+            window.location.href = "/";
+          });
+          
         }
         
       }).fail(function(jqXHR){
