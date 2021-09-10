@@ -151,7 +151,8 @@
             title: 'Success!',
             text: res.message,
             icon: 'success',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'Ok',
+            position: 'top-end'
           }).then(function() {
             window.location.href = "/";
           });

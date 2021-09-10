@@ -37,8 +37,10 @@ class RegisterController extends Controller
             "password" => "required|min:8|confirmed",
             "password_confirmation" => "required|min:8"
         ]);
+
         if(!$validator->passes())
             return response()->json(['error'=>$validator->errors()]);
+            
         $user = new User();
         $user->name = $request->input("name");
         $user->email = $request->input("email");

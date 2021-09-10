@@ -13,10 +13,17 @@ use App\Http\Controllers\Auth\RegisterController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',[LoginController::class,"index"]);
-Route::post('/login/process',[LoginController::class,"process"])->name("login.process");
 
+//login
+Route::group(['prefix'=>'login'],function() {
+    Route::get('/',[LoginController::class,"index"]);
+    Route::post('/process',[LoginController::class,"process"])->name("login.process");
+});
+
+//registration
 Route::group(['prefix'=>'membership'],function() {
     Route::get('/',[RegisterController::class,"index"]);
     Route::post('/process',[RegisterController::class,"process"])->name("register.process");
 });
+
+//loggedIn
