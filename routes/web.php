@@ -15,7 +15,7 @@ use App\Http\Controllers\Auth\RegisterController;
 */
 
 //login
-Route::group(['prefix'=>'login'],function() {
+Route::group(['prefix'=>'/'],function() {
     Route::get('/',[LoginController::class,"index"]);
     Route::post('/process',[LoginController::class,"process"])->name("login.process");
 });

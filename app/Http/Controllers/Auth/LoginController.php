@@ -22,12 +22,14 @@ class LoginController extends Controller
 
     public function process(Request $request)
     {
+        //return invalid form validation
         $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
         $credentials = $request->only("email","password");
+        //successfully logged in
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->to(RouteServiceProvider::HOME);
