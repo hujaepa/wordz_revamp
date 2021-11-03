@@ -1,6 +1,14 @@
 @extends('layouts.auth.master')
 
 @section('content')
+<style>
+  #particles-js {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: -100;
+}
+</style>
 <div id="particles-js"></div>
 <div class="login-box">
     <!-- /.login-logo -->
@@ -152,7 +160,8 @@
             text: res.message,
             icon: 'success',
             confirmButtonText: 'Ok',
-            position: 'top-end'
+            position: 'center',
+            heightAuto: false,
           }).then(function() {
             window.location.href = "/";
           });
