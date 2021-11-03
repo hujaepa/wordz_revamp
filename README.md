@@ -7,7 +7,7 @@ Wordz is a web-based dictitionary app that is integrated with https://github.com
 - JQuery
 - MySQL
 
-## How to Install CompileJe into your local environment
+## How to Install Wordz into your local environment
 Run these commands:
 1) git clone into your pc
 2) npm install 
