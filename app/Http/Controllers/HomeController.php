@@ -8,11 +8,17 @@ class HomeController extends Controller
 {
    public function index()
    {
-       echo "<a href='/logout'>Test</a>";
+       return view("home");
    }
+   
    public function logout()
    {
        Auth::logout();
        return redirect()->route('login');
+   }
+
+   public function test()
+   {
+       echo "test";
    }
 }
