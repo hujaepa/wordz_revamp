@@ -97,6 +97,7 @@
       $('#password-confirm-error').hide();
     });
 
+    {{--Ajax Call--}}
     function formAjax(formData){
       return $.ajax({
         url:"/membership/process",
@@ -109,45 +110,51 @@
     $("#register").find(":input").on("keyup",function(){
       if($(this).hasClass("is-invalid")){
         $(this).removeClass("is-invalid");
-        if($(this).attr('name')==="name"){
+
+        if($(this).attr('name')==="name") {
           $('#name-error').hide();
         }
-        if($(this).attr('name')==="email"){
+
+        if($(this).attr('name')==="email") {
           $('#email-error').hide();
         }
-        if($(this).attr('name')==="password"){
+
+        if($(this).attr('name')==="password") {
           $('#password-error').hide();
         }
-        if($(this).attr('name')==="password_confirmation"){
+
+        if($(this).attr('name')==="password_confirmation") {
           $('#password-confirm-error').hide();
         }
       }
     });
 
+    {{--Submit Form--}}
     $("#register").on("submit",function(e){
       e.preventDefault();
       let formData = $(this).serialize();
       formAjax(formData).done(function(res){
 
-        if(res.hasOwnProperty("error")){
+        if(res.hasOwnProperty("error")) {
           if(res.error.hasOwnProperty('name')){
             $("#name-error").show();
             $("#name").addClass('is-invalid');
             $('#name-error').html(res.error.name);
           }
-          if(res.error.hasOwnProperty('email')){
+
+          if(res.error.hasOwnProperty('email')) {
             $("#email-error").show();
             $("#email").addClass('is-invalid');
             $('#email-error').html(res.error.email);
           }
 
-          if(res.error.hasOwnProperty('password')){
+          if(res.error.hasOwnProperty('password')) {
             $("#password-error").show();
             $("#password").addClass('is-invalid');
             $('#password-error').html(res.error.password);
           }
 
-          if(res.error.hasOwnProperty('password_confirmation')){
+          if(res.error.hasOwnProperty('password_confirmation')) {
             $("#password-confirm-error").show();
             $("#password_confirmation").addClass('is-invalid');
             $('#password-confirm-error').html(res.error.password_confirmation);
