@@ -47,7 +47,7 @@
                                     @if (!empty($d->synonyms))
                                         <span class="text-muted">Synonyms:</span>
                                         @foreach ($d->synonyms as $s)
-                                            {{$s}},
+                                            <span class="badge badge-primary ml-1">{{$s}}</span>
                                         @endforeach
                                     @endif
                                 @endforeach
