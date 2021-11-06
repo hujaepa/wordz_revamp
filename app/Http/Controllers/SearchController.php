@@ -9,6 +9,7 @@ class SearchController extends Controller
     {
         $url = 'https://api.dictionaryapi.dev/api/v2/entries/en_US';
         $keyword = $request->input('search');
+        
         $request_url = $url . '/' . $keyword;
         $curl = curl_init($request_url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -23,7 +24,7 @@ class SearchController extends Controller
             curl_close($curl);
             $result=json_decode($response);
         }
-        return view('home',["result"=>$result]);
+        return view('home',["result"=>$result,"keyword"=>$keyword]);
     }
     public function test()
     {
