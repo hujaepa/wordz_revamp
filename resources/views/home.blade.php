@@ -7,7 +7,7 @@
                   <form action="{{url('/search/result')}}" method="post">
                     @csrf
                       <div class="input-group">
-                          <input type="search" class="form-control form-control-lg" placeholder="Type your keywords here" name="search" value="<?php echo (!empty($keyword)) ? $keyword:'';?>">
+                          <input type="search" class="form-control form-control-lg" id="keyword" placeholder="Type your keywords here" name="search" value="<?php echo (!empty($keyword)) ? $keyword:'';?>">
                           <div class="input-group-append">
                               <button type="submit" class="btn btn-lg btn-primary">
                                   <i class="fa fa-search"></i>
@@ -16,7 +16,7 @@
                       </div>
                   </form>
                  @if (!empty($result) && is_array($result))
-                     <div class="card card-outline card-success m-5">
+                     <div class="card card-outline card-success m-5" id="result">
                          <div class="card-header">
                              <h4 class="font-italic">{{$result[0]->word}}</h4>
                          </div>
@@ -55,17 +55,24 @@
                          </div>
                      </div>
                     @else
-                    {{--No Result Found--}}
-                     @if(!empty($keyword))
-                        <div class="row m-2">
-                            <div class="col-sm-12 d-flex justify-content-center">
-                                <h3 class="text-muted">Sorry, no result found.</h3>
+                        {{--No Result Found--}}
+                        @if(!empty($keyword))
+                            <div class="row m-2">
+                                <div class="col-sm-12 d-flex justify-content-center">
+                                    <h3 class="text-muted">Sorry, no result found.</h3>
+                                </div>
                             </div>
-                        </div>
-                     @endif
-                 @endif
+                        @endif
+                    @endif
               </div>
           </div>
       </div>
   </section>
+  <script>
+      $("#keyword").on("keyup click", function(){
+        if($(this).val()===''){
+            $("#result").remove();
+        }
+      });
+  </script>
 @endsection
