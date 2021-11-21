@@ -29,8 +29,16 @@ Route::group(['prefix'=>'membership'],function() {
 });
 
 //loggedIn
-Route::middleware(['auth'])->group(function(){
-    Route::get('/home',[HomeController::class,"index"])->name('home');
-    Route::post('/search/result',[SearchController::class,"result"])->name('result');
-    Route::get('/logout',[HomeController::class,"logout"])->name('logout');
+// Route::middleware(['auth'])->group(function(){
+//     Route::get('/home',[HomeController::class,"index"])->name('home');
+//     Route::post('/search/result',[SearchController::class,"result"])->name('result');
+//     Route::post('/favourite/add',[FavouriteController::class,"add"])->name("favourite.add");
+//     Route::get('/logout',[HomeController::class,"logout"])->name('logout');
+// });
+
+//home
+Route::group(["prefix"=>"home","middleware"=>"auth"],function() {
+    Route::get('/',[HomeController::class,"index"])->name("home.index");
+    Route::post('/search',[HomeController::class,"search"])->name('home.search');
+    Route::get('/logout',[HomeController::class,"logout"])->name('home.logout');
 });

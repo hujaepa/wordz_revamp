@@ -4,7 +4,7 @@
       <div class="container-fluid">
           <div class="row">
               <div class="col-md-8 offset-md-2">
-                  <form action="{{url('/search/result')}}" method="post">
+                  <form action="{{route('home.search')}}" method="post">
                     @csrf
                       <div class="input-group">
                           <input type="search" class="form-control form-control-lg" id="keyword" placeholder="Type your keywords here" name="search" value="<?php echo (!empty($keyword)) ? $keyword:'';?>">
@@ -18,7 +18,14 @@
                  @if (!empty($result) && is_array($result))
                      <div class="card card-outline card-success m-5" id="result">
                          <div class="card-header">
-                             <h4 class="font-italic">{{$result[0]->word}}</h4>
+                            <div class="float-left">
+                                <h2 class="font-italic">{{$result[0]->word}}</h2>
+                            </div>
+                            <div class="float-right">
+                                <button class="btn btn-primary" id="add-word">
+                                    <i class="fa fa-star text-warning"></i> Add to favourites
+                                </button>
+                            </div>
                          </div>
                          <div class="card-body">
                             <div class="audio justify-content-md-center">
@@ -73,6 +80,13 @@
         if($(this).val()===''){
             $("#result").remove();
         }
+      });
+
+      $("#add-word").click(function(){
+        $(this).attr("class","btn btn-secondary font-italic");
+        $(this).attr("disabled",true);
+        $(this).text("added to favourites");
+        toastr.success("Succesfully added to favourites");
       });
   </script>
 @endsection

@@ -10,7 +10,8 @@ try {
     window.$ = window.jQuery = require('jquery');
     window.Swal = require('Sweetalert2');
     require('bootstrap');
-    require('admin-lte/dist/js/adminlte.min.js');//adminltejs
+    require('admin-lte/dist/js/adminlte.min.js');
+    window.toastr = require('toastr/build/toastr.min.js');
 } catch (e) {}
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

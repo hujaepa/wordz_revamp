@@ -33,7 +33,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="{{route('logout')}}"><i class="fas fa-door-open"></i>Logout</a>
+            <a class="nav-link" href="{{route('home.logout')}}"><i class="fas fa-door-open"></i>Logout</a>
           </li>
         </ul>
       </div>
