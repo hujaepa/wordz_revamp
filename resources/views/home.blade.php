@@ -22,7 +22,7 @@
                             </div>
                             <div class="float-right">
                                 <button class="btn btn-primary" id="add-word">
-                                    <i class="fa fa-star text-warning"></i> Add to bookmark
+                                    <i class="fas fa-bookmark text-white"></i> Add to bookmark
                                 </button>
                             </div>
                          </div>
@@ -31,8 +31,8 @@
                             @if (!empty($result[0]->phonetics[0]->audio))
                             <span class="text-muted">Pronounciation</span>
                                 <br>
-                                <audio controls>
-                                <source src="{{$result[0]->phonetics[0]->audio}}" type="audio/mpeg">
+                                <audio controls style="width:100%; max-width:300px">
+                                    <source src="{{$result[0]->phonetics[0]->audio}}" type="audio/mpeg">
                                 </audio>
                             @endif
                             </div>

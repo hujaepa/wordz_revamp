@@ -25,14 +25,13 @@ class HomeController extends Controller
         $request_url = $url . '/' . $keyword;
         $curl = curl_init($request_url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);//ignore ssl url
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);//ignore ssl url
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
         $response = curl_exec($curl);
         if(!curl_exec($curl)) {
             $info["status"]=false;
             $info["curl_error"]='Curl error: ' . curl_error($curl);
-        }
-        else {
+        } else {
             curl_close($curl);
             $result=json_decode($response);
         }
