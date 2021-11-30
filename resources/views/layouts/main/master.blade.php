@@ -17,7 +17,7 @@
 <script src="{{asset('js/app.js')}}"></script>
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-lg navbar-white navbar-light">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{route('home.index')}}">
       <img src="{{asset("img/wordz.png")}}" width="100px" height="20px" />
     </a>
     </button>

@@ -29,7 +29,7 @@
                          <div class="card-body">
                             <div class="audio justify-content-md-center">
                             @if (!empty($result[0]->phonetics[0]->audio))
-                            <span class="text-muted">Pronounciation</span>
+                                <span class="text-muted">Pronounciation</span>
                                 <br>
                                 <audio controls style="width:100%; max-width:300px">
                                     <source src="{{$result[0]->phonetics[0]->audio}}" type="audio/mpeg">
