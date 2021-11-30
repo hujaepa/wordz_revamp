@@ -14,16 +14,15 @@
                               </button>
                           </div>
                       </div>
-                  </form>
                  @if (!empty($result) && is_array($result))
                      <div class="card card-outline card-success m-5" id="result">
                          <div class="card-header">
                             <div class="float-left">
-                                <h2 class="font-italic">{{$result[0]->word}}</h2>
+                                <h2 class="font-italic" id="word">{{$result[0]->word}}</h2>
                             </div>
                             <div class="float-right">
                                 <button class="btn btn-primary" id="add-word">
-                                    <i class="fa fa-star text-warning"></i> Add to favourites
+                                    <i class="fa fa-star text-warning"></i> Add to bookmark
                                 </button>
                             </div>
                          </div>
@@ -71,6 +70,8 @@
                             </div>
                         @endif
                     @endif
+                    
+                  </form>
               </div>
           </div>
       </div>
@@ -82,11 +83,29 @@
         }
       });
 
-      $("#add-word").click(function(){
-        $(this).attr("class","btn btn-secondary font-italic");
-        $(this).attr("disabled",true);
-        $(this).text("added to favourites");
-        toastr.success("Succesfully added to favourites");
+      $("#add-word").click(function(e) { 
+        e.preventDefault();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $("input[name='_token']").val()
+            }
+        });
+        $.ajax({
+            url:"{{route('bookmark.add')}}",
+            method:"POST",
+            data:{'word':$("#word").text()},
+            success:function(res) {
+                console.log(res);
+                if(res.status) {
+                    $("#add-word").attr("class","btn btn-secondary font-italic");
+                    $("#add-word").html('<i class="fas fa-check-circle"></i> Added to bookmark');        
+                    $("#add-word").attr("disabled",true);
+                    toastr.success("Succesfully added to bookmark");
+                } else {
+                    toastr.danger("Something went wrong. Cannot bookmark the word!");
+                }
+            }
+        });
       });
   </script>
 @endsection
