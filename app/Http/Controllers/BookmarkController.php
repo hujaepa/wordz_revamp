@@ -18,4 +18,9 @@ class BookmarkController extends Controller
             'message' => "Successfully bookmark the word"
         ]);
     }
+
+    public function list()
+    {
+        echo "test";
+    }
 }
