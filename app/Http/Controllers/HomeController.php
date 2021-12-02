@@ -8,7 +8,11 @@ class HomeController extends Controller
 {
    public function index()
    {
-       return view("home");
+       $data = [
+           "icon"=>"<i class='fas fa-search'></i>",
+           "title"=>"Search"
+       ];
+       return view("home",$data);
    }
    
    public function logout()
@@ -35,6 +39,13 @@ class HomeController extends Controller
             curl_close($curl);
             $result=json_decode($response);
         }
-        return view('home',["result"=>$result,"keyword"=>$keyword]);
+
+        $data = [
+            "icon"=>"<i class='fas fa-search'></i>",
+            "title"=>"Search",
+            "result"=>$result,
+            "keyword"=>$keyword
+        ];
+        return view('home',$data);
     }
 }

@@ -39,4 +39,5 @@ Route::group(["prefix"=>"home","middleware"=>"auth"],function() {
 //bookmark
 Route::group(["prefix"=>"bookmark","middleware"=>"auth"],function() {
     Route::post('/',[BookmarkController::class,"add"])->name("bookmark.add");
+    Route::get('/list/{id}',[BookmarkController::class,"list"]);
 });
