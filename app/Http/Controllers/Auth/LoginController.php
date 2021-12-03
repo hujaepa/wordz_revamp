@@ -14,10 +14,14 @@ class LoginController extends Controller
      */
     public function index()
     {
-        $data = [
-            "title" => "Log In"
-        ];
-        return view("auth.login",$data);
+        if(Auth::check()){
+            redirect("/home");
+        } else {
+            $data = [
+                "title" => "Log In"
+            ];
+            return view("auth.login",$data);
+        }
     }
 
     public function process(Request $request)

@@ -12,7 +12,7 @@
 <div id="particles-js"></div>
 <div class="login-box">
     <!-- /.login-logo -->
-    <div class="card card-outline card-primary">
+    <div class="card card-outline card-success">
       <div class="card-header text-center p-3">
         <img src="{{asset("img/wordz.png")}}" width="40%" />
       </div>
@@ -21,7 +21,7 @@
         <p class="login-box-msg text-muted font-weight-bold">New user registration</p>
         <form action="{{route('register.process')}}" method="post" id="register">
           @csrf
-          {{--Name--}}
+          
           <div class="form-group mb-3">
             <div class="input-group">
               <input type="text" name="name" id="name" class="form-control" placeholder="Name">

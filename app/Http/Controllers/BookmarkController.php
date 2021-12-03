@@ -21,14 +21,16 @@ class BookmarkController extends Controller
         ]);
     }
 
-    public function list($user_id)
+    public function list()
     {
-       $words = Bookmark::where("added_by","=",$user_id)->orderby("created_at","desc")->get();
+       $total = Bookmark::where("added_by","=",Auth::user()->id)->count();
+       $words = Bookmark::where("added_by","=",Auth::user()->id)->orderby("created_at","desc")->paginate(10);
        $data = [
         "active"=>"bookmark",
         "icon"=>"<i class='fas fa-bookmark'></i>",
         "title"=>"Bookmark",
-        "words" => $words,"user_id" => $user_id
+        "total" => $total,
+        "words" => $words
        ];
        return view("bookmark",$data);
     }

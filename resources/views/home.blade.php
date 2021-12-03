@@ -21,9 +21,15 @@
                                 <h2 class="font-italic" id="word">{{$result[0]->word}}</h2>
                             </div>
                             <div class="float-right">
-                                <button class="btn btn-primary" id="add-word">
-                                    <i class="fas fa-bookmark text-white"></i> Add to bookmark
-                                </button>
+                                @if ($chcBookmark>0)
+                                    <button class="btn btn-secondary font-italic" id="add-word" disabled>
+                                        <i class="fas fa-check-circle"></i> Added to bookmark
+                                    </button> 
+                                @else
+                                    <button class="btn btn-primary" id="add-word">
+                                        <i class="fas fa-bookmark text-white"></i> Add to bookmark
+                                    </button>
+                                @endif
                             </div>
                          </div>
                          <div class="card-body">
@@ -38,20 +44,39 @@
                             </div>
 
                             @if (!empty($result[0]->meanings))
-                            <div class="meaning m-2">
-                                <span class="text-muted">Definitions</span>
+                                <div class="meaning m-2">
+                                    <span class="text-muted">Definitions</span>
+                                    <ul>
+                                        @foreach ($result[0]->meanings[0]->definitions as $d)
+                                            <li>{{$d->definition}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @if (!empty($result[0]->meanings[0]->partOfSpeech))
+                                    <div class="partOfSpeech m-2">
+                                        <span class="text-muted">Part Of Speech</span>
+                                        <ul>
+                                            <li>{{$result[0]->meanings[0]->partOfSpeech}}</li>
+                                        </ul>
+                                    </div>
+                                @endif
+                            @endif
+                            
+                            <div class="example m-2">
+                                <span class="text-muted">Example:</span>
                                 <ul>
                                     @foreach ($result[0]->meanings[0]->definitions as $d)
-                                        <li>{{$d->definition}}</li>
+                                        @if (!empty($d->example))
+                                            <li>{{$d->example}}</li>
+                                        @endif
                                     @endforeach
                                 </ul>
                             </div>
-                            @endif
 
                             <div class="synonym m-2">
+                                <span class="text-muted">Synonyms:</span>
                                 @foreach ($result[0]->meanings[0]->definitions as $d)
                                     @if (!empty($d->synonyms))
-                                        <span class="text-muted">Synonyms:</span>
                                         @foreach ($d->synonyms as $s)
                                             <span class="badge badge-primary ml-1">{{$s}}</span>
                                         @endforeach
