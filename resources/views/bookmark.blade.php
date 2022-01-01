@@ -11,9 +11,9 @@
                     <ul class="list-group">
                         @foreach ($words as $w)
                             <li class="list-group-item text-muted">
-                                <div class="float-left">{{ucwords($w->word)}}</div>
+                                <div class="float-left the-word">{{ucwords($w->word)}}</div>
                                 <div class="float-right">
-                                    <button class="btn btn-success btn-sm"><i class="fas fa-eye"></i> View</button>
+                                    <a href="/bookmark/view/{{$w->word}}" class="btn btn-success btn-sm view-word"><i class="fas fa-eye"></i> View</a>
                                 </div>
                             </li>
                         @endforeach

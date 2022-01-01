@@ -19,6 +19,7 @@
       right: 0;
     }
   </style>
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">
