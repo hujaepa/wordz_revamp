@@ -17,23 +17,27 @@
 <script src="{{asset('js/app.js')}}"></script>
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-lg navbar-white navbar-light">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{route('home.index')}}">
       <img src="{{asset("img/wordz.png")}}" width="100px" height="20px" />
     </a>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
           <li class="nav-item dropdown">
             <a class="nav-link" href="#">Welcome, {{Auth::user()->name}}</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-list-alt"></i> Favourite Wordz</a>
+            <a class="nav-link" href="#"><i class="fas fa-bookmark"></i> Bookmark Wordz</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="{{route('logout')}}"><i class="fas fa-door-open"></i>Logout</a>
+            <a class="nav-link" href="{{route('home.logout')}}"><i class="fas fa-sign-out-alt"></i>Logout</a>
           </li>
         </ul>
       </div>

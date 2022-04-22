@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\BookmarkController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,9 +29,14 @@ Route::group(['prefix'=>'membership'],function() {
     Route::post('/process',[RegisterController::class,"process"])->name("register.process");
 });
 
-//loggedIn
-Route::middleware(['auth'])->group(function(){
-    Route::get('/home',[HomeController::class,"index"])->name('home');
-    Route::post('/search/result',[SearchController::class,"result"])->name('result');
-    Route::get('/logout',[HomeController::class,"logout"])->name('logout');
+//home
+Route::group(["prefix"=>"home","middleware"=>"auth"],function() {
+    Route::get('/',[HomeController::class,"index"])->name("home.index");
+    Route::post('/search',[HomeController::class,"search"])->name('home.search');
+    Route::get('/logout',[HomeController::class,"logout"])->name('home.logout');
+});
+
+//bookmark
+Route::group(["prefix"=>"bookmark","middleware"=>"auth"],function() {
+    Route::post('/',[BookmarkController::class,"add"])->name("bookmark.add");
 });
