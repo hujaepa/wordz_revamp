@@ -4,7 +4,7 @@
 <div id="particles-js"></div>
 <div class="login-box">
     <!-- /.login-logo -->
-    <div class="card card-outline card-primary">
+    <div class="card card-outline card-success">
       <div class="card-header text-center p-3">
         {{-- <span class="h1"><b>Wordz</b></span> --}}
         <img src="{{asset("img/wordz.png")}}" width="40%" />
